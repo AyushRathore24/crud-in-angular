@@ -1,0 +1,32 @@
+.navbar {
+    display: flex;
+ 
+    justify-content: space-between;
+    align-items: center;
+    background-color: #121212; /* Dark background */
+    padding: 10px 20px;
+    color: #FFF; /* Text color */
+  }
+
+  /* Logo */
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #f9b234; /* Orange color */
+  }
+
+  /* Add user button */
+  .btn-add-user {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f9b234; /* Orange color */
+    color: #121212; /* Dark text color */
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn-add-user:hover {
+    opacity: 0.8;
+  }

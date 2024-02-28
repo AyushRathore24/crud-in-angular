@@ -1,0 +1,61 @@
+                           <!-- this div is for navbar -->
+<div class="navbar">
+  <a href="#" class="logo">Crud</a>
+  <button class="btn-add-user" (click)="openformforaddinguser()">Add User</button>
+</div>
+               <!-- notify div is for notification of adding user -->
+
+<div id="notify" *ngIf="showpopup"><h2 id="tittle">User added successfuly</h2></div>
+
+                           <!-- this div for card container -->
+
+<div class="ag-format-container"  *ngFor="let post of users; let i = index" #container >
+  <div class="ag-courses_box" *ngIf="showcard" >
+    <div class="ag-courses_item"  >
+      <a href="#" class="ag-courses-item_link">
+        <div class="ag-courses-item_bg"></div>
+
+        <div class="ag-courses-item_title" >
+          User : {{post.id}}&#160;<br>
+          Tittle: {{post.title}} <br>
+          Body: {{post.body}}
+        </div>
+
+        <div class="ag-courses-item_date-box">
+          UserId:
+          <span class="ag-courses-item_date">
+           {{post.userId}}
+          </span>
+          <div id="bn">
+            <button class="btn1"  (click)="openform(post)"  >Update</button>
+            <button class="btn1"  (click)="remove(post['id'],i)" >Delete</button>
+          </div>
+        </div>
+      </a>
+     
+    </div>
+   </div>         
+  </div>
+                                <!-- the div given below is for form -->
+
+  <div class="form-container" *ngIf="showform" >
+    <div class="form-title">{{Formheading}}</div>
+    <form  [formGroup]="userform">
+      <input type="number"   name="id" placeholder="ID"  [class.is-valid]="userform.get('id')?.invalid" formControlName ="id">
+      <p [class.is-valid]="userform.get('id')?.invalid && userform.get('id')?.touched"   class="is-valid">fill the field first</p>
+      <input type="number"name="userId" placeholder="User ID" formControlName ="userId">
+      <input type="text" required="" name="title" placeholder="Title" formControlName="title">
+      <input type="text" required="" name="body" placeholder="body" formControlName="body">
+      <div>
+      
+                                  <!-- buttons and validations -->
+                                  
+        <button type="submit" *ngIf="showbutton" [disabled]="userform.invalid"  class="btn" (click)="onsubmit()">Add User</button>
+        <button type="button" [style]="display" class="btn btn-update" (click)="editdata(userform.value,userform.get('id')?.value)" >Save</button>
+        <button type="button"  class="btn btn-cancel" (click)="closeform()" >Cancel</button>
+        <p *ngIf="userform.invalid">fill the all field</p>
+
+      </div>
+    </form>
+  </div>
+   
